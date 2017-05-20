@@ -4,7 +4,7 @@ body {
 }
 
 #board {
-  margin: 20% auto 10% auto;
+  margin: 10% auto;
   background-color: #fff;
 }
 
@@ -37,6 +37,11 @@ font-size: 3.5em;
   left: 50%;
   margin-top: -100px; /* Negative half of height. */
   margin-left: -250px; /* Negative half of width. */
+}
+
+#modal h3 {
+  font-size: 2.5em;
+  margin-bottom: 40px;
 }
 
 #modal .symbol-choice button {

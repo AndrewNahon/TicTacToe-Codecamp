@@ -1,9 +1,3 @@
-$('.btn').on('click', function() {
-  var symbol = $(this).html();
-  game.setPlayer(symbol);
-  $("#modal").fadeOut();
-});
-
 var game = {
   human: '',
   computer: '',
@@ -18,8 +12,7 @@ var game = {
   },
   drawBoard: function() {
     var $board = $("#board");
-    var rows = '';
-    var row1 = "<tr id='row_1'>", row2 = "<tr id='row_2'>", row3 = "<tr id='row_3'>";
+    var row1 = "<tr>", row2 = "<tr>", row3 = "<tr>";
 
     $board.empty();
 
@@ -35,9 +28,7 @@ var game = {
       }
     });
 
-    $board.append(row1 + "</tr>");
-    $board.append(row2 + "</tr>");
-    $board.append(row3 + "</tr>");
+    $board.append(row1 + "</tr>" + row2 + "</tr>" + row3 + "</tr>");
   },
   computerTurn: function() {
     var sqr = AI.minimax(this.board, this.computer).index;
@@ -69,7 +60,7 @@ var game = {
     } else if ( AI.winning(game.board, game.computer) ) {
       msg = 'Computer won!';
     } else {
-      msg = "It's a Tie!";
+      msg = "It's a tie!";
     }
 
     alert(msg);
@@ -122,7 +113,7 @@ var AI = {
 
     if ( this.winning(newBoard, game.computer) ) {
       return { score: 10 };
-    } else if ( this.winning(newBoard, game.human)) {
+    } else if ( this.winning(newBoard, game.human) ) {
       return { score: -10 };
     } else if ( openSquares.length === 0 ) {
       return { score: 0 };
@@ -131,10 +122,8 @@ var AI = {
     var moves = [];
 
     for ( var i = 0; i < openSquares.length; i++ ) {
-      //console.log(openSquares);
       var move = {};
       move.index = openSquares[i];
-      //console.log(moves);
       newBoard[openSquares[i]] = player;
 
       if (player === game.computer ) {
@@ -143,14 +132,10 @@ var AI = {
         move.score = result.score;
       } else {
         var result = this.minimax(newBoard, game.computer);
-        if (result === undefined ) {
-          console.log(newBoard, openSquares, move, result);
-        }
         move.score = result.score;
       }
 
       newBoard[openSquares[i]] = move.index;
-
       moves.push(move);
     }
 
