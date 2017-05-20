@@ -1,0 +1,47 @@
+body {
+  position: relative;
+  background-color: #ffdada;
+}
+
+#board {
+  margin: 20% auto 10% auto;
+  background-color: #fff;
+}
+
+td {
+border: 3px solid black;
+height: 200px;
+width: 200px;
+text-align: center;
+font-size: 3.5em;
+}
+
+#modal {
+  display: block;
+  z-index: 100;
+  position: fixed;
+  background-color: #ffdada;
+  opacity: 1;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.symbol-choice {
+  position: fixed;
+  width: 500px;
+  height: 200px;
+  opacity: 1;
+  top: 30%;
+  left: 50%;
+  margin-top: -100px; /* Negative half of height. */
+  margin-left: -250px; /* Negative half of width. */
+}
+
+#modal .symbol-choice button {
+  font-size: 2em;
+  display: inline-block;
+  width: 49%;
+  height: 40%;
+}
